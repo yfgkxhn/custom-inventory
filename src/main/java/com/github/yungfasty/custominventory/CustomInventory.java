@@ -23,6 +23,7 @@ public class CustomInventory {
     @Getter private final ItemStack[] contents;
     @Getter private final HashMap<Integer, Consumer<InventoryClickEvent>> actions = new LinkedHashMap<>();
     @Getter @Setter private Consumer<InventoryClickEvent> defaultAction;
+    @Getter @Setter private Consumer<InventoryClickEvent> defaultActionPlayer;
     @Getter private final String title;
     @Getter private final int size;
 

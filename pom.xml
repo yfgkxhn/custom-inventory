@@ -21,6 +21,7 @@
     </repositories>
 
     <dependencies>
+
         <dependency>
             <groupId>com.github.azbh111</groupId>
             <artifactId>spigot-1.8.8</artifactId>

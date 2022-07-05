@@ -1,0 +1,3 @@
+name: inventory-manager
+version: 1.0.9
+main: com.github.yungfasty.custominventory.plugin.InventoryPlugin

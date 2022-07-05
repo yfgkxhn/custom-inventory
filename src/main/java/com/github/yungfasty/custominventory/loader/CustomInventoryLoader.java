@@ -8,6 +8,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.inventory.InventoryCloseEvent;
+import org.bukkit.inventory.PlayerInventory;
 import org.bukkit.plugin.Plugin;
 
 /**
@@ -34,11 +35,13 @@ public class CustomInventoryLoader {
 
                 if (event.getCurrentItem() == null || event.getCurrentItem().getType() == Material.AIR) return;
 
+                val playerInventory = event.getClickedInventory().getClass().getSimpleName().contains("PlayerInventory");
                 val customHolder = (CustomInventoryHolder) event.getInventory().getHolder();
                 val slot = event.getSlot();
 
                 if (customHolder.hasAction(slot)) customHolder.execute(event, slot);
-                else if (customHolder.getDefaultAction() != null) customHolder.getDefaultAction().accept(event);
+                else if (playerInventory && customHolder.getForHolder().getDefaultActionPlayer() != null) customHolder.getForHolder().getDefaultActionPlayer().accept(event);
+                else if (!playerInventory && customHolder.getDefaultAction() != null) customHolder.getDefaultAction().accept(event);
 
             }
 
